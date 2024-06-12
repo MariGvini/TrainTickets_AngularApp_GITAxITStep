@@ -1,0 +1,32 @@
+<div class="reservation-form-main">
+    <div class="form-container">
+        <h3>დაჯავშნეთ მატარებლის ბილეთები</h3>
+        <form  #trainForm="ngForm">
+            <div class="from-div">
+                <select name="from" [(ngModel)]="trainsData.from" required>
+                    <option value="" disabled selected>საიდან</option> <!-- Placeholder option -->
+                    <option *ngFor="let station of stations" [value]="station.name">{{station.name}}</option>
+                </select>
+            </div>
+
+            <div class="where-div">
+                <select name="to" [(ngModel)]="trainsData.to" required>
+                    <option value="" disabled selected>სად</option> <!-- Placeholder option -->
+                    <option *ngFor="let station of stations" [value]="station.name">{{station.name}}</option>
+                </select>
+            </div>
+
+            <div class="departure-date" >
+                <input name="date" [(ngModel)]="trainsData.date" type="date" placeholder="გამგზავრების თარიღი" required>
+            </div>
+
+            <div class="passengers-number">
+                <input type="number" (input)="onQuantityChange($event)" placeholder="მგზავრების რაოდენობა" required min="1" step="1">
+            </div>
+
+            <div class="btn">
+                <button type="submit" (click)="getDepartures()" [routerLink]="'/trainspage'" [disabled]="trainForm.invalid">მატარებლების მოძებნა</button>
+            </div>
+        </form>
+    </div>
+</div>

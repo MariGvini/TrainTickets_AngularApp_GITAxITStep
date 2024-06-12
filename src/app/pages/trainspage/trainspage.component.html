@@ -1,0 +1,37 @@
+<div class="trainsPageDiv">
+  <!-- <p style="color: green;">trainspage works!</p> -->
+
+  <div *ngIf="trainsData" style="padding: 30px;">
+      <ul style="list-style-type:none;">
+        <li> <b> საიდან: </b> {{ trainsData.from }}</li>
+        <li><b>სად:</b> {{ trainsData.to }}</li>
+        <li><b>თარიღი:</b> {{ trainsData.date }}</li>
+        <li><b>რაოდენობა:</b> {{ quantity }}</li>
+      </ul>
+  </div>
+
+
+  <div *ngIf="departuredata">
+      <h2>Train Options:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Train Name</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th></th> <!-- For the booking button -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let train of departuredata.trains">
+            <td>{{ train.number }}</td>
+            <td>{{ train.departure }}</td>
+            <td>{{ train.arrive }}</td>
+            <td><button (click)="bookTrain(train)">Book</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+</div>
